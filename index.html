@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MnW Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div style="margin: 10%;">
+        <div class="form-group">
+            <label for="Amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="amount" placeholder="0.0">
+        </div>
+        <div class="form-group">
+            <label for="Days">No. of Days</label>
+            <input type="number" class="form-control" name="days" id="days" placeholder="0">
+        </div>
+        <br>
+        <button onclick="calculateInterest()" class="btn btn-primary">Calculate</button>
+
+        <div style="margin-top: 1%;">
+            <h4 id="totalAmount">Total Amount : 0.0</h4>
+        </div>
+    </div>
+
+    <script>
+        function calculateInterest() {
+            var amount = +document.getElementById('amount').value;
+            var days = +document.getElementById('days').value;
+
+            for (let i = 0; i < days; i++) {
+                amount = amount + (amount * 0.06);
+            }
+            obj = new Intl.NumberFormat('en-US');
+            amount = obj.format(amount);
+            document.getElementById('totalAmount').innerText = "Total Amount : " + amount;
+        }
+    </script>
+
+</body>
+
+</html>
